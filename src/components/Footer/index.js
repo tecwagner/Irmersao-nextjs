@@ -33,7 +33,7 @@ export default function Footer(props) {
       </a>
       <p>
         Orgulhosamente criado durante
-        {' wagner '}
+        {' '}
         a
         {' '}
         <a href="https://www.alura.com.br/">
