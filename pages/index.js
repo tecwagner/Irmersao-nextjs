@@ -1,14 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
-import Head from 'next/head'
+import Head from 'next/head';
 
-import db from '../db.json'
-import Widget from '../src/components/Widget'
-import Footer from '../src/components/Footer'
-import GitHubCorner from '../src/components/GitHubCorner'
-import QuizBackground from '../src/components/QuizBackground'
-import QuizLogo from '../src/components/QuizLogo'
+import db from '../db.json';
+import Widget from '../src/components/Widget';
+import Footer from '../src/components/Footer';
+import GitHubCorner from '../src/components/GitHubCorner';
+import QuizBackground from '../src/components/QuizBackground';
+import QuizLogo from '../src/components/QuizLogo';
+import Input from '../src/components/Input';
+import Button from '../src/components/Button'
 
+//Router
+import { useRouter } from 'next/router'
 
 //função que estiliza o componente
 // const Title = styled.h1`
@@ -43,13 +47,16 @@ export const QuizContainer = styled.div`
   }
 `;
 
-
 //essa função que representa a pagina
 export default function Home() {
+  //Todos os Hooks 
+  const router = useRouter()
+  const [name, setName] = React.useState('')
+
   return (
     <QuizBackground backgroundImage={db.bg}>
       <Head >
-        <title>Quiz - Modelo Base</title>
+        <title>{db.title}</title>
       </Head>
       <QuizContainer>
         <QuizLogo />
@@ -58,7 +65,23 @@ export default function Home() {
             <h1>teste 1</h1>
           </Widget.Header>
           <Widget.Content >
-            <p>xuribibi</p>
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              //router manda para proxima pagina              
+              router.push(`/quiz?name=${name}`)              
+            }}>
+              <Input 
+                  name="NomeUsuario"
+                  onChange={(e) => {
+                  setName(e.target.value)
+                }}
+                placeholder="Diz ai seu nome" 
+                value={name}
+              ></Input>
+              <Button type="submit" disabled={name.length === 0}>
+                {`Jogar ${name}`}
+              </Button>
+            </form>
           </Widget.Content>
         </Widget>
 
