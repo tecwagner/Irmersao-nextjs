@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import db from '../db.json';
-import Widget from '../src/components/Widget';
-import QuizLogo from '../src/components/QuizLogo';
-import QuizBackground from '../src/components/QuizBackground';
-import GitHubCorner from '../src/components/GitHubCorner';
-import QuizContainer from '../src/components/QuizContainer/QuizContainer'
-import Button from '../src/components/Button'
-import AlternativesForm from '../src/components/AlternativeForm'
+// import db from '../../../db.json';
+import Widget from '../../../src/components/Widget';
+import QuizBackground from '../../../src/components/QuizBackground';
+import GitHubCorner from '../../../src/components/GitHubCorner';
+import QuizContainer from '../../../src/components/QuizContainer/QuizContainer'
+import Button from '../../../src/components/Button'
+import AlternativesForm from '../../../src/components/AlternativeForm'
 import { CircularProgress } from '@material-ui/core'
+import BackLinkArrow from '../../components/BackLinkArrow';
 
 
 function ResultWidget({ results }) {
@@ -71,8 +71,9 @@ function WidgetQuestion({ question, totalQuestions, questionIndex, onSubmit, add
     const hasAlternativeSelected = selectedAlternative !== undefined
 
     return (
-        <Widget>
+        <Widget >
             <Widget.Header>
+                <BackLinkArrow href="/" />
                 <h3>
                     {/* Interpolação do java script */}
                     {` Pergunta ${questionId + 1} de ${totalQuestions} `}
@@ -148,14 +149,17 @@ const screenStates = {
     RESULT: 'RESULT'
 }
 
-export default function QuizPage() {
+export default function QuizPage({ externalQuestions, externalBg }) {
+    console.log(externalQuestions, externalBg,'externo' )
 
-    const [screenState, setScreenState] = useState(screenStates.LOADING) //estado inicial será carregar tela
-    const [currentQuestion, setCurrentQuestion] = useState(0)
-    const [results, setResults] = useState([])
-    const totalQuestions = db.questions.length
-    const questionIndex = currentQuestion //como a pergunta muda a cada seleção. Deve retorna a proxima pergunta
-    const question = db.questions[questionIndex] // quantidade de questão
+    const [screenState, setScreenState] = useState(screenStates.LOADING); //estado inicial será carregar tela
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [results, setResults] = useState([]);
+    const questionIndex = currentQuestion ;//como a pergunta muda a cada seleção. Deve retorna a proxima pergunta
+    const question = externalQuestions[questionIndex]; // quantidade de questão
+    const totalQuestions = externalQuestions.length;
+    
+
 
     function addResult(result) {
         // results.push(result)
@@ -193,7 +197,7 @@ export default function QuizPage() {
 
     return (
 
-        <QuizBackground backgroundImage={db.bg}>
+        <QuizBackground backgroundImage={externalBg}>
             <QuizContainer>
                 {/* <QuizLogo /> */}
                 {screenState === screenStates.QUIZ && (

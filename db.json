@@ -62,9 +62,10 @@
     }
   ],
   "external": [
-    "irmersao-nextjs-git-main.tecwagner.vercel.app",
-    "irmersao-nextjs.tecwagner.vercel.app",
-    "irmersao-nextjs.vercel.app"
+    "https://aluraquiz-halloween.lucaskuhn.vercel.app/",
+    "https://quiz-react.brenoha.vercel.app "
+    
+    
   ],
   "theme": {
     "colors": {
