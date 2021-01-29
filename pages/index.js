@@ -59,41 +59,42 @@ export default function Home() {
         <title>{db.title}</title>
       </Head>
       <QuizContainer>
-        <QuizLogo />
-        <Widget>
+        {/* <QuizLogo /> */}
+        {/* <Widget>
           <Widget.Header>
-            <h1>teste 1</h1>
+            <h1>Quiz sobre CSS</h1>
           </Widget.Header>
-          <Widget.Content >
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              //router manda para proxima pagina              
-              router.push(`/quiz?name=${name}`)              
-            }}>
-              <Input 
-                  name="NomeUsuario"
-                  onChange={(e) => {
-                  setName(e.target.value)
-                }}
-                placeholder="Diz ai seu nome" 
-                value={name}
-              ></Input>
-              <Button type="submit" disabled={name.length === 0}>
-                {`Jogar ${name}`}
-              </Button>
-            </form>
+          <Widget.Content>
+            <p>Seja Bem Vindo(a)! {`${name}`}</p>
           </Widget.Content>
-        </Widget>
+        </Widget> */}
 
         <Widget>
           <Widget.Header>
             <h1>Quiz da galera</h1>
           </Widget.Header>
-          <Widget.Content>
-            <p>teste teste teste</p>
+          <Widget.Content >
+            <p>Seja Bem Vindo(a)! {`${name}`}</p>
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              //router manda para proxima pagina              
+              router.push(`/quiz?name=${name}`)
+            }}>
+              <Input
+                name="NomeUsuario"
+                onChange={(e) => {
+                  setName(e.target.value)
+                }}
+                placeholder="Diz ai seu nome"
+                value={name}
+              ></Input>
+              <Button type="submit" disabled={name.length === 0}>
+                Jogar
+              </Button>
+            </form>
           </Widget.Content>
         </Widget>
-        < Footer />
+        {/* < Footer /> */}
       </QuizContainer>
       <GitHubCorner projectUrl="https://github.com/tecwagner" />
     </QuizBackground>

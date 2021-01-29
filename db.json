@@ -27,7 +27,9 @@
       }
     ],
     "external": [
-      ""
+      "irmersao-nextjs-git-main.tecwagner.vercel.app",
+      "irmersao-nextjs.tecwagner.vercel.app",
+      "irmersao-nextjs.vercel.app"
     ],
     "theme": {
       "colors": {

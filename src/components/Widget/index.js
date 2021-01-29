@@ -42,6 +42,8 @@ Widget.Content = styled.div`
     list-style: none;
     padding: 0;
   }
+  justify-content: center;
+  /* align-items: center; */
 `;
 
 Widget.Topic = styled.a`
